@@ -1,7 +1,7 @@
-Tomochain Network Stats
+Rupaya Network Stats
 ============
 
-Fork of [cubedro/eth-netstats](https://github.com/cubedro/eth-netstats) used to expose Tomochain network status.
+Fork of [cubedro/eth-netstats](https://github.com/cubedro/eth-netstats) used to expose Rupaya network status.
 
 ## Usage
 ```
