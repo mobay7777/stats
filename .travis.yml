@@ -14,33 +14,33 @@ jobs:
         - docker
       install: skip
       before_script:
-        - docker build -t rupayaproject/stats .
+        - docker build -t rupaya/stats .
       script:
         - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
-        - docker tag rupayaproject/stats rupayaproject/stats:latest
-        - docker push rupayaproject/stats:latest
-        - docker tag rupayaproject/stats rupayaproject/stats:$TRAVIS_BUILD_ID
-        - docker push rupayaproject/stats:$TRAVIS_BUILD_ID
+        - docker tag rupaya/stats rupaya/stats:latest
+        - docker push rupaya/stats:latest
+        - docker tag rupaya/stats rupaya/stats:$TRAVIS_BUILD_ID
+        - docker push rupaya/stats:$TRAVIS_BUILD_ID
 
     - stage: Build and push image (tagged)
       services:
         - docker
       install: skip
       before_script:
-        - docker build -t rupayaproject/stats .
+        - docker build -t rupaya/stats .
       script:
         - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
-        - docker tag rupayaproject/stats rupayaproject/stats:latest
-        - docker push rupayaproject/stats:latest
-        - docker tag rupayaproject/stats rupayaproject/stats:testnet
-        - docker push rupayaproject/stats:testnet
-        - docker tag rupayaproject/stats rupayaproject/stats:$TRAVIS_TAG
-        - docker push rupayaproject/stats:$TRAVIS_TAG
+        - docker tag rupaya/stats rupaya/stats:latest
+        - docker push rupaya/stats:latest
+        - docker tag rupaya/stats rupaya/stats:testnet
+        - docker push rupaya/stats:testnet
+        - docker tag rupaya/stats rupaya/stats:$TRAVIS_TAG
+        - docker push rupaya/stats:$TRAVIS_TAG
 
 stages:
   - name: Lint
   - name: Tests
   - name: Build and push image
-    if: type != pull_request AND branch = master AND tag IS blank AND repo = rupayaproject/stats
+    if: type != pull_request AND branch = master AND tag IS blank AND repo = rupaya/stats
   - name: Build and push image (tagged)
-    if: type != pull_request AND branch =~ ^v AND tag IS present AND repo = rupayaproject/stats
+    if: type != pull_request AND branch =~ ^v AND tag IS present AND repo = rupaya/stats
