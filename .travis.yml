@@ -14,33 +14,33 @@ jobs:
         - docker
       install: skip
       before_script:
-        - docker build -t tomochain/netstats .
+        - docker build -t rupayaproject/stats .
       script:
         - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
-        - docker tag tomochain/netstats tomochain/netstats:latest
-        - docker push tomochain/netstats:latest
-        - docker tag tomochain/netstats tomochain/netstats:$TRAVIS_BUILD_ID
-        - docker push tomochain/netstats:$TRAVIS_BUILD_ID
+        - docker tag rupayaproject/stats rupayaproject/stats:latest
+        - docker push rupayaproject/stats:latest
+        - docker tag rupayaproject/stats rupayaproject/stats:$TRAVIS_BUILD_ID
+        - docker push rupayaproject/stats:$TRAVIS_BUILD_ID
 
     - stage: Build and push image (tagged)
       services:
         - docker
       install: skip
       before_script:
-        - docker build -t tomochain/netstats .
+        - docker build -t rupayaproject/stats .
       script:
         - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
-        - docker tag tomochain/netstats tomochain/netstats:latest
-        - docker push tomochain/netstats:latest
-        - docker tag tomochain/netstats tomochain/netstats:testnet
-        - docker push tomochain/netstats:testnet
-        - docker tag tomochain/netstats tomochain/netstats:$TRAVIS_TAG
-        - docker push tomochain/netstats:$TRAVIS_TAG
+        - docker tag rupayaproject/stats rupayaproject/stats:latest
+        - docker push rupayaproject/stats:latest
+        - docker tag rupayaproject/stats rupayaproject/stats:testnet
+        - docker push rupayaproject/stats:testnet
+        - docker tag rupayaproject/stats rupayaproject/stats:$TRAVIS_TAG
+        - docker push rupayaproject/stats:$TRAVIS_TAG
 
 stages:
   - name: Lint
   - name: Tests
   - name: Build and push image
-    if: type != pull_request AND branch = master AND tag IS blank AND repo = tomochain/netstats
+    if: type != pull_request AND branch = master AND tag IS blank AND repo = rupayaproject/stats
   - name: Build and push image (tagged)
-    if: type != pull_request AND branch =~ ^v AND tag IS present AND repo = tomochain/netstats
+    if: type != pull_request AND branch =~ ^v AND tag IS present AND repo = rupayaproject/stats

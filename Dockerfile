@@ -2,7 +2,7 @@ FROM node:8-alpine
 
 LABEL maintainer="aasim@rupx.io"
 
-ENV WS_SECRET ''
+ENV WS_SECRET 'universal-gas-lighter-refill'
 
 WORKDIR /netstats
 
